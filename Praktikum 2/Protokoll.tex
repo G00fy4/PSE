@@ -1,0 +1,51 @@
+%\documentclass{proc}
+
+\documentclass[10pt]{article}
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{calc}% http://ctan.org/pkg/calc
+\usepackage[
+  letterpaper,%
+  textheight={47\baselineskip+\topskip},%
+  textwidth={\paperwidth-126pt},%
+  footskip=75pt,%
+  marginparwidth=0pt,%
+  top={\topskip+0.75in}]{geometry}% http://ctan.org/pkg/geometry
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage} % for the number of the last page in the document
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verteilte Systeme Protokoll Aufgabe 2}
+\rhead{Fabian Herbert, Rolf Huesmann}
+\lfoot{\today}
+\rfoot{Seite \thepage\ von \pageref{LastPage}}
+
+\begin{document}
+\section{Zielsetzung Aufgabe 2 (Dashbord)}
+Um mehrere Drucker verwalten zu können entwickeln wir ein Dashbord. Jeder Drucker bekommt eine ID zu gewissen und ist über diese ansprechbar.
+Das Dashbord hat immer den Überblick über den Status der Drucker, deren Aufträge Bezeichnungsweise den Druckwarteschlangen.
+\\
+Über das Rest kommuniziert das Dashbord mit den Druckern.
+
+
+\section{Protokoll}
+Wir haben das Dashboard über REST mit verschiedenen Druckern kommunizieren lassen. Als ID verwenden wir die Server-Adresse bzw. URL. Über das Dashboard können Druckaufträge verwaltet und den verschiedenen Drucker zugeteilt werden.
+Es können detaillierte Statusabfragen über einzelne Druckaufträge aufgerufen werden.
+
+\subsection{Server/Client rollen}
+Die Drucker stellen jeweils einen REST-Server zur Verfügung. Das Dashboard fragt diese regelmäßig ab um deren Status zu erfahren. Druckaufträge werden über GET-Parameter in der URL an die Drucker übermittelt.
+%so viele druckaufträge wie möglich in einer minute drucken lassen als test 1minute 10 sek für einen druckazftrag
+\subsection{Test}
+Als Test haben wir unsere Drucker mit Druckaufträgen geflutet. Dabei haben wir gemessen, dass die Drucker für unsere Testdatei 70 Sekunden brauchen um diese zu drucken.
+
+\section{Zielsetzung Aufgabe 3 (MQTT-Broker)}
+Der MQTT-Broker leitet Aufträge von der Smartphone-Applikation weiter an den ausgewählten Drucker. \\
+Des weiteren schickt er die Druckerstatusmeldungen an das Dashbord, welches dadurch immer den Überblick behält.\\
+Es ermittelt die Druckkosten und gibt diese weiter an das Smartphone.\\
+
+
+\subsection{Ziel zum nächstem Praktikum}
+Zum nächstem Termin möchten wir dem Drucker über MQTT kommunizieren.
+\end{document}
