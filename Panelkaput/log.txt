@@ -1,6 +1,0 @@
-Am 9.5.16 auf Rolfs acer Notebook
-TCP benötigte: 65903ms
-UDP benötigte: 65776ms
-Am 10.5.16 Rolf VM
-UDP benötigte 65523ms
-TCP benötigte 65487ms
